@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     public float Speed;
 
     private Rigidbody2D rig;  //variavel de data type (rigidbody2d) da unity
-    private Animator anim; //pega as componentes do animator da unity (no caso queremos as booleanas de animaÁ„o)
+    private Animator anim; //pega as componentes do animator da unity (no caso queremos as booleanas de anima√ß√£o)
     
     public float JumpForce; //Variavel para o Jump (similar ao speed)
 
@@ -34,8 +34,8 @@ public class Player : MonoBehaviour
     void Move()
     {
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
-        transform.position += movement * Time.deltaTime * Speed; /// A multiplicaÁ„o È para poder controlar V
-        if (Input.GetAxis("Horizontal")>0) // cada condiÁ„o do movimento, feita desse jeito para podermos espelhar a animaÁ„o
+        transform.position += movement * Time.deltaTime * Speed; /// A multiplica√ß√£o √© para poder controlar V
+        if (Input.GetAxis("Horizontal")>0) // cada condi√ß√£o do movimento, feita desse jeito para podermos espelhar a anima√ß√£o
         {
             anim.SetBool("walk", true);
             transform.eulerAngles = new Vector3(0f, 0f, 0f); //Metodo para rotacionar no transform (neste caso para virar a direita
@@ -52,11 +52,11 @@ public class Player : MonoBehaviour
     }
     void Jump()
     {
-        if(Input.GetButtonDown("Jump")) //Aperta o bot„o e o boneco n„o esta pulando
+        if(Input.GetButtonDown("Jump")) //Aperta o bot√£o e o boneco n√£o esta pulando
         {
-            if(!isJumping) //se o personagem esta no ch„o -> isJumping=false
+            if(!isJumping) //se o personagem esta no ch√£o -> isJumping=false
             {
-                //Recebe a variavel jumpforce em y (controlada visualmente) e diz q essa forÁa deve ser do tipo impulso
+                //Recebe a variavel jumpforce em y (controlada visualmente) e diz q essa for√ßa deve ser do tipo impulso
                 rig.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
                 doubleJump = true; //se esta pulando pode dar mais um pulo
                 anim.SetBool("jump", true);
@@ -70,20 +70,20 @@ public class Player : MonoBehaviour
                 }
             }
 
-            //Recebe a variavel jumpforce em y (controlada visualmente) e diz q essa forÁa deve ser do tipo impulso 
+            //Recebe a variavel jumpforce em y (controlada visualmente) e diz q essa for√ßa deve ser do tipo impulso 
             
         }
     }
-    void OnCollisionEnter2D(Collision2D collision)   //verifica se o personagem esta no ch„o
+    void OnCollisionEnter2D(Collision2D collision)   //verifica se o personagem esta no ch√£o
     {
         if(collision.gameObject.layer == 6)
         {
-            isJumping = false; // O personagem n„o esta pulando, esta no ch„o
+            isJumping = false; // O personagem n√£o esta pulando, esta no ch√£o
             anim.SetBool("jump", false);
         }
     }
 
-    void OnCollisionExit2D(Collision2D collision)  //verifica se o personagem esta FORA do ch„o
+    void OnCollisionExit2D(Collision2D collision)  //verifica se o personagem esta FORA do ch√£o
     {
         if(collision.gameObject.layer == 6)
         {
